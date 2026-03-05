@@ -1,0 +1,19 @@
+{
+  "name": "考勤管理系统",
+  "short_name": "考勤管理系统",
+  "description": "工地记工管理系统 - 考勤、工资、报销一站式管理",
+  "start_url": "/jg/index.php",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait",
+  "scope": "/jg/",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

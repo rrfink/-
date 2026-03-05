@@ -1,0 +1,15 @@
+[2026-03-04 14:26:52] 开始执行自动备份
+[2026-03-04 14:26:52] 加载设置失败: SQLSTATE[HY000]: General error: 1 no such table: system_settings
+[2026-03-04 14:26:52] 加载设置: {"autoBackupEnabled":true,"backupFrequency":"weekly","backupTime":"02:00","backupRetention":2}
+[2026-03-04 14:26:52] 未到达备份时间，跳过备份
+[2026-03-04 14:26:52] 开始执行自动备份
+[2026-03-04 14:26:52] 加载设置失败: SQLSTATE[HY000]: General error: 1 no such table: system_settings
+[2026-03-04 14:26:52] 加载设置: {"autoBackupEnabled":true,"backupFrequency":"weekly","backupTime":"02:00","backupRetention":2}
+[2026-03-04 14:26:52] 未到达备份时间，跳过备份
+[2026-03-04 14:28:26] 开始执行自动备份
+[2026-03-04 14:28:26] 加载设置: {"systemName":"\u8003\u52e4\u7ba1\u7406\u7cfb\u7edf","allowRememberPassword":true,"lateThreshold":10,"autoBackupEnabled":true,"backupFrequency":"weekly","backupTime":"02:00","backupRetention":2}
+[2026-03-04 14:28:26] 未到达备份时间，跳过备份
+[2026-03-04 14:28:26] 开始执行自动备份
+[2026-03-04 14:28:26] 加载设置: {"systemName":"\u8003\u52e4\u7ba1\u7406\u7cfb\u7edf","allowRememberPassword":true,"lateThreshold":10,"autoBackupEnabled":true,"backupFrequency":"weekly","backupTime":"02:00","backupRetention":2}
+[2026-03-04 14:28:26] 备份成功: backup_20260304_142826.sql (67383 bytes)
+[2026-03-04 14:28:26] 自动备份执行完成

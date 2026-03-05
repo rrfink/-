@@ -1,0 +1,20 @@
+{
+  "id": "custom-midnight-black",
+  "name": "午夜黑",
+  "variables": {
+    "--primary-color": "#9c27b0",
+    "--primary-color-dark": "#7b1fa2",
+    "--primary-color-light": "#ce93d8",
+    "--bg-primary": "#1a1a2e",
+    "--bg-secondary": "#16213e",
+    "--bg-tertiary": "#0f3460",
+    "--text-primary": "#eaeaea",
+    "--text-secondary": "#b8b8b8",
+    "--text-tertiary": "#888888",
+    "--border-color": "#533483",
+    "--success-color": "#4caf50",
+    "--warning-color": "#ff9800",
+    "--error-color": "#f44336",
+    "--info-color": "#2196f3"
+  }
+}
