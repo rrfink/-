@@ -1,0 +1,459 @@
+/* 骨架屏样式 */
+
+/* 图片懒加载样式 */
+[data-lazy] {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-color: #f0f0f0;
+}
+
+[data-lazy].lazy-loaded {
+    opacity: 1;
+    background-color: transparent;
+}
+
+[data-lazy].lazy-error {
+    opacity: 1;
+    background-color: #fee;
+}
+
+/* 图片加载占位符动画 */
+[data-lazy]:not(.lazy-loaded):not(.lazy-error) {
+    animation: lazy-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes lazy-pulse {
+    0%, 100% {
+        background-color: #f0f0f0;
+    }
+    50% {
+        background-color: #e0e0e0;
+    }
+}
+
+/* 暗色主题下的懒加载样式 */
+[data-theme="dark"] [data-lazy] {
+    background-color: #2a2a2a;
+}
+
+[data-theme="dark"] [data-lazy]:not(.lazy-loaded):not(.lazy-error) {
+    animation: lazy-pulse-dark 1.5s ease-in-out infinite;
+}
+
+@keyframes lazy-pulse-dark {
+    0%, 100% {
+        background-color: #2a2a2a;
+    }
+    50% {
+        background-color: #3a3a3a;
+    }
+}
+
+/* 顶部进度条 */
+.top-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.top-progress-bar.active {
+    opacity: 1;
+}
+
+.top-progress-bar-inner {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #165DFF, #0EA5E9, #165DFF);
+    background-size: 200% 100%;
+    animation: progress-loading 2s ease-in-out infinite;
+    transition: width 0.3s ease;
+}
+
+@keyframes progress-loading {
+    0% {
+        background-position: 200% 0;
+        width: 0%;
+    }
+    50% {
+        background-position: 100% 0;
+        width: 70%;
+    }
+    100% {
+        background-position: 0% 0;
+        width: 100%;
+    }
+}
+
+/* 基础骨架动画 */
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 25%,
+        #e0e0e0 50%,
+        #f0f0f0 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+/* 暗色主题下的骨架屏 */
+[data-theme="dark"] .skeleton {
+    background: linear-gradient(
+        90deg,
+        #2a2a2a 25%,
+        #3a3a3a 50%,
+        #2a2a2a 75%
+    );
+    background-size: 200% 100%;
+}
+
+/* 骨架屏容器 */
+.skeleton-container {
+    display: none;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skeleton-container.active {
+    display: block;
+}
+
+/* 头部骨架 */
+.skeleton-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: var(--card-bg, #fff);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.skeleton-logo {
+    width: 120px;
+    height: 32px;
+}
+
+.skeleton-nav {
+    display: flex;
+    gap: 12px;
+}
+
+.skeleton-nav-item {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* 个人信息区域骨架 */
+.skeleton-personal-info {
+    background: var(--card-bg, #fff);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.skeleton-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.skeleton-info-title {
+    width: 100px;
+    height: 24px;
+}
+
+.skeleton-info-action {
+    width: 80px;
+    height: 32px;
+    border-radius: 6px;
+}
+
+.skeleton-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 16px;
+}
+
+.skeleton-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.skeleton-info-label {
+    width: 60px;
+    height: 14px;
+}
+
+.skeleton-info-value {
+    width: 100%;
+    height: 20px;
+}
+
+/* 统计卡片骨架 */
+.skeleton-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.skeleton-stat-card {
+    background: var(--card-bg, #fff);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.skeleton-stat-label {
+    width: 80px;
+    height: 14px;
+    margin-bottom: 12px;
+}
+
+.skeleton-stat-value {
+    width: 120px;
+    height: 32px;
+    margin-bottom: 8px;
+}
+
+.skeleton-stat-change {
+    width: 60px;
+    height: 14px;
+}
+
+/* 日历区域骨架 */
+.skeleton-calendar {
+    background: var(--card-bg, #fff);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.skeleton-calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.skeleton-calendar-title {
+    width: 150px;
+    height: 24px;
+}
+
+.skeleton-calendar-nav {
+    display: flex;
+    gap: 8px;
+}
+
+.skeleton-calendar-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+.skeleton-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.skeleton-weekday {
+    height: 36px;
+    border-radius: 8px;
+}
+
+.skeleton-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.skeleton-day {
+    aspect-ratio: 1;
+    border-radius: 8px;
+}
+
+/* 工作记录表格骨架 */
+.skeleton-work-table {
+    background: var(--card-bg, #fff);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.skeleton-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.skeleton-table-title {
+    width: 100px;
+    height: 24px;
+}
+
+.skeleton-table-row {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color, #e5e7eb);
+}
+
+.skeleton-table-cell {
+    flex: 1;
+    height: 20px;
+}
+
+.skeleton-table-cell:first-child {
+    flex: 0 0 100px;
+}
+
+/* 项目列表骨架 */
+.skeleton-projects {
+    background: var(--card-bg, #fff);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.skeleton-projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.skeleton-projects-title {
+    width: 80px;
+    height: 24px;
+}
+
+.skeleton-projects-action {
+    width: 100px;
+    height: 32px;
+    border-radius: 6px;
+}
+
+.skeleton-project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skeleton-project-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--bg-light, #f5f5f5);
+    border-radius: 8px;
+}
+
+.skeleton-project-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.skeleton-project-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.skeleton-project-name {
+    width: 60%;
+    height: 18px;
+}
+
+.skeleton-project-desc {
+    width: 40%;
+    height: 14px;
+}
+
+/* 底部操作栏骨架 */
+.skeleton-action-bar {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.skeleton-action-btn {
+    flex: 1;
+    height: 48px;
+    border-radius: 12px;
+}
+
+.skeleton-action-btn.primary {
+    background: linear-gradient(
+        90deg,
+        #165DFF 25%,
+        #0EA5E9 50%,
+        #165DFF 75%
+    );
+    background-size: 200% 100%;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .skeleton-container {
+        padding: 12px;
+    }
+    
+    .skeleton-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .skeleton-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .skeleton-header {
+        padding: 12px;
+    }
+    
+    .skeleton-logo {
+        width: 100px;
+        height: 28px;
+    }
+}
+
+/* 隐藏实际内容，显示骨架屏 */
+.content-hidden .app-content {
+    display: none;
+}
+
+.content-hidden .skeleton-container {
+    display: block;
+}

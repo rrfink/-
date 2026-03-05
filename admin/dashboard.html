@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员后台</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="/jg/js/system-settings.js"></script>
+   
+    <script src="/jg/js-core/version-check.js"></script>
+</head>
+<body>
+    <!-- 侧边导航栏 -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1><i class="fas fa-cogs"></i> <span id="systemNameDisplay">考勤管理系统</span></h1>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="nav-item active" data-page="dashboard">
+                <i class="fas fa-tachometer-alt"></i> 仪表盘
+            </a>
+            <a href="#users" class="nav-item" data-page="users">
+                <i class="fas fa-users"></i> 用户管理
+            </a>
+            <a href="#projects" class="nav-item" data-page="projects">
+                <i class="fas fa-project-diagram"></i> 项目管理
+            </a>
+            <a href="#attendance" class="nav-item" data-page="attendance">
+                <i class="fas fa-clipboard-list"></i> 考勤管理
+            </a>
+            <a href="#holidays" class="nav-item" data-page="holidays">
+                <i class="fas fa-calendar-alt"></i> 节假日管理
+            </a>
+            <a href="#statistics" class="nav-item" data-page="statistics">
+                <i class="fas fa-chart-bar"></i> 数据统计
+            </a>
+            <a href="#settings" class="nav-item" data-page="settings">
+                <i class="fas fa-cog"></i> 系统设置
+            </a>
+            <a href="#database" class="nav-item" data-page="database">
+                <i class="fas fa-database"></i> 数据库管理
+            </a>
+            <a href="#feedback" class="nav-item" data-page="feedback">
+                <i class="fas fa-comment-dots"></i> 反馈管理
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">管</div>
+                <div class="user-details">
+                    <h3>管理员</h3>
+                    <p>系统管理员</p>
+                </div>
+            </div>
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> 退出登录
+            </button>
+        </div>
+    </div>
+    
+    <!-- 主内容区域 -->
+    <div class="main-content">
+        <div class="header">
+            <div style="display: flex; align-items: center;">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2 class="header-title" id="pageTitle">仪表盘</h2>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i> 刷新
+                </button>
+                <button class="btn btn-primary" id="addBtn">
+                    <i class="fas fa-plus"></i> 新建
+                </button>
+            </div>
+        </div>
+        <div class="content" id="pageContent">
+            <!-- 页面内容将通过JavaScript动态加载 -->
+        </div>
+    </div>
+    
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,625 @@
+/* 引入全局变量（确保和项目变量统一） */
+@import './variables.css';
+
+/* 考勤页面容器 */
+.attendance-page {
+  padding: var(--spacing-lg, 24px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.attendance-page .page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg, 24px);
+  flex-wrap: wrap;
+  gap: var(--spacing-md, 16px);
+}
+
+.attendance-page h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary, #111827);
+  margin: 0;
+}
+
+.page-actions {
+  display: flex;
+  gap: var(--spacing-md, 16px);
+  align-items: center;
+}
+
+/* 筛选条件样式 */
+.filters {
+  display: flex;
+  gap: var(--spacing-md, 16px);
+  align-items: center;
+  margin-bottom: var(--spacing-md, 16px);
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm, 8px);
+}
+
+.filter-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary, #6b7280);
+}
+
+/* 信息网格样式（与主页统一） */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md, 16px);
+  margin-bottom: var(--spacing-lg, 24px);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs, 4px);
+}
+
+.info-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary, #6b7280);
+}
+
+.info-value {
+  font-size: 14px;
+  color: var(--text-primary, #111827);
+}
+
+/* 表单元素样式（与主页统一） */
+.form-input {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 2px rgba(147, 197, 253, 0.2);
+}
+
+.form-select {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  width: 100%;
+  background: var(--bg-light, #ffffff);
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 2px rgba(147, 197, 253, 0.2);
+}
+
+/* 按钮样式（与主页统一） */
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(22, 93, 255, 0.2);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(22, 93, 255, 0.2);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--text-secondary), var(--text-light));
+  color: white;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(107, 114, 128, 0.2);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(107, 114, 128, 0.2);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, var(--success-color), #059669);
+  color: white;
+}
+
+.btn-success:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 180, 42, 0.2);
+}
+
+.btn-success:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 180, 42, 0.2);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, var(--error-color), #dc2626);
+  color: white;
+}
+
+.btn-danger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(245, 34, 45, 0.2);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(245, 34, 45, 0.2);
+}
+
+.btn-lg {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.btn-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-group {
+  display: flex;
+  gap: var(--spacing-md, 16px);
+  align-items: center;
+}
+
+/* 考勤列表容器 */
+.attendance-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm, 8px);
+}
+
+/* 考勤项卡片（核心美化） */
+.attendance-item {
+  padding: var(--spacing-md, 16px);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: var(--border-radius, 8px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-light);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  gap: var(--spacing-md, 16px);
+}
+
+/* 未选中 - hover效果 */
+.attendance-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-color: var(--selected-border, #e2e8f0);
+  transform: translateY(-1px);
+}
+
+/* 选中态样式 */
+.attendance-item.selected {
+  background: var(--selected-bg, #f9fafb);
+  border-color: var(--selected-border, #e2e8f0);
+  box-shadow: var(--selected-shadow, 0 4px 12px rgba(0, 0, 0, 0.08));
+  transform: translateY(-2px);
+}
+
+/* 选中态 - 左侧标识线（点睛） */
+.attendance-item.selected::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(180deg, #3b82f6, #818cf8);
+}
+
+/* 日期列 */
+.attendance-item .date {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-color);
+  min-width: 100px;
+}
+
+/* 状态徽章（重点美化） */
+.attendance-item .status {
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  min-width: 60px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+/* 状态徽章图标 */
+.attendance-item .status::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  flex-shrink: 0;
+}
+
+/* 不同状态的渐变+描边 */
+.status-present {
+  background: linear-gradient(135deg, var(--success-color), #059669);
+  color: white;
+  border-color: rgba(0, 180, 42, 0.3);
+}
+
+.status-present::before {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.status-half {
+  background: linear-gradient(135deg, var(--warning-color), #d97706);
+  color: white;
+  border-color: rgba(255, 125, 0, 0.3);
+}
+
+.status-half::before {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.status-absent {
+  background: linear-gradient(135deg, var(--error-color), #dc2626);
+  color: white;
+  border-color: rgba(245, 34, 45, 0.3);
+}
+
+.status-absent::before {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.status-leave {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  border-color: rgba(22, 93, 255, 0.3);
+}
+
+.status-leave::before {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* 状态徽章悬停效果 */
+.attendance-item:hover .status {
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* 选中行的状态徽章强化 */
+.attendance-item.selected .status {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8), 0 0 0 4px currentColor, 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: scale(1.1);
+}
+
+/* 状态徽章动画效果 */
+.attendance-item .status {
+  animation: statusBadgeFadeIn 0.3s ease-out;
+}
+
+@keyframes statusBadgeFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 备注列 */
+.attendance-item .remark {
+  font-size: 16px;
+  color: var(--text-secondary, #6b7280);
+  flex: 1;
+  margin: 0 var(--spacing-md, 16px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 150px;
+}
+
+/* 空状态美化 */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-xl, 32px) var(--spacing-md, 16px);
+  color: var(--text-secondary, #6b7280);
+  background: var(--bg-light, #ffffff);
+  border: 1px dashed var(--border-color, #e5e7eb);
+  border-radius: var(--border-radius, 8px);
+  margin-top: var(--spacing-md, 16px);
+}
+
+.empty-state::before {
+  content: '📅';
+  font-size: 48px;
+  display: block;
+  margin-bottom: var(--spacing-sm, 8px);
+  opacity: 0.5;
+}
+
+/* 统计网格样式（与主页统一） */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--spacing-md, 16px);
+  margin: var(--spacing-md, 16px) 0;
+}
+
+/* 统计卡片样式（与主页统一） */
+.stat-card {
+  background: var(--card-bg, #ffffff);
+  border-radius: var(--border-radius-md, 8px);
+  padding: var(--spacing-md, 16px);
+  text-align: center;
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.05));
+  transition: all var(--transition-fast, 0.15s) ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md, 0 4px 6px rgba(0,0,0,0.1));
+}
+
+.stat-label {
+  font-size: var(--font-size-sm, 14px);
+  font-weight: 500;
+  color: var(--text-secondary, #666666);
+  margin-bottom: var(--spacing-xs, 4px);
+}
+
+.stat-value {
+  font-size: var(--font-size-lg, 18px);
+  font-weight: 700;
+  color: var(--text-color, #333333);
+  margin-bottom: var(--spacing-xs, 4px);
+}
+
+.stat-change {
+  font-size: var(--font-size-sm, 14px);
+  color: var(--text-light, #999999);
+}
+
+.stat-change.positive {
+  color: var(--success-color, #00B42A);
+}
+
+.stat-change.negative {
+  color: var(--error-color, #f5222d);
+}
+
+/* 状态显示区域 */
+.status-display {
+  display: flex;
+  gap: var(--spacing-sm, 8px);
+  align-items: center;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  min-width: 80px;
+  background: var(--bg-light);
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.status-badge.status-present {
+  background: linear-gradient(135deg, var(--success-color), #059669);
+  color: white;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+  .attendance-item {
+    flex-wrap: wrap;
+    gap: var(--spacing-sm, 8px);
+  }
+  .attendance-item .remark {
+    margin: var(--spacing-sm, 8px) 0 0 0;
+    width: 100%;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* 考勤站特定样式 */
+#current-date {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+#current-time {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-color);
+  font-family: 'Courier New', monospace;
+}
+
+#current-project {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* 加载动画 */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 打卡按钮动画 */
+.btn-success, .btn-danger {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-success::after, .btn-danger::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-success:active::after, .btn-danger:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* 最近打卡时间样式 */
+.recent-clock-time {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* 应用筛选按钮样式 */
+#apply-date-filter:hover {
+  background-color: #0069d9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+#apply-date-filter:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* 考勤记录项样式（补充） */
+.attendance-item .status.status-present {
+  background-color: var(--success-light);
+  color: var(--success-dark);
+}
+
+.attendance-item .status.status-half {
+  background-color: var(--warning-light);
+  color: var(--warning-dark);
+}
+
+.attendance-item .status.status-absent {
+  background-color: var(--danger-light);
+  color: var(--danger-dark);
+}
+
+.attendance-item .status.status-leave {
+  background-color: var(--info-light);
+  color: var(--info-dark);
+}
+
+.attendance-item .status.status-rest {
+  background-color: var(--info-light);
+  color: var(--info-dark);
+}
+
+.attendance-item .status.status-holiday {
+  background-color: var(--info-light);
+  color: var(--info-dark);
+}
+
+.attendance-item .status.status-unrecorded {
+  background-color: rgba(255, 200, 200, 0.5);
+  color: var(--error-color);
+  font-weight: 600;
+}
+
+/* 深色模式适配 */
+[data-theme="dark"] .attendance-item {
+  background-color: #2d3748;
+}
+
+[data-theme="dark"] .attendance-item .date {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .attendance-item .remark {
+  color: #a0aec0;
+}

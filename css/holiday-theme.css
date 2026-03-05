@@ -1,0 +1,505 @@
+/**
+ * 节日主题样式
+ */
+
+/* 节日主题激活时的基础样式 */
+body.holiday-theme-active {
+    transition: background-color 0.5s ease;
+}
+
+/* 装饰元素容器 */
+.holiday-decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    overflow: hidden;
+}
+
+/* 浮动图标 */
+.holiday-icon-float {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 48px;
+    animation: holiday-float 3s ease-in-out infinite;
+    opacity: 0.8;
+    z-index: 9999;
+}
+
+@keyframes holiday-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+/* 装饰动画元素 */
+.holiday-decoration {
+    position: absolute;
+    opacity: 0.3;
+    animation: holiday-fall 10s linear infinite;
+}
+
+@keyframes holiday-fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 主题通知 */
+.holiday-theme-notification {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--holiday-primary, #DC143C), var(--holiday-secondary, #FFD700));
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.holiday-theme-notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.holiday-notification-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.holiday-icon {
+    font-size: 28px;
+}
+
+.holiday-message {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.holiday-close-btn {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    margin-left: 8px;
+    transition: background 0.2s;
+}
+
+.holiday-close-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* ==================== 各节日特定样式 ==================== */
+
+/* 春节主题 */
+body.theme-spring-festival {
+    --primary-color: #DC143C;
+    --secondary-color: #FFD700;
+    --bg-color: #FFF8DC;
+}
+
+body.theme-spring-festival .section {
+    border: 1px solid rgba(220, 20, 60, 0.2);
+}
+
+body.theme-spring-festival .btn-primary {
+    background: linear-gradient(135deg, #DC143C, #FF6347);
+}
+
+/* 元宵节主题 */
+body.theme-lantern-festival {
+    --primary-color: #FF6B6B;
+    --secondary-color: #FFE66D;
+    --bg-color: #FFF9E6;
+}
+
+/* 清明节主题 */
+body.theme-qingming {
+    --primary-color: #2E8B57;
+    --secondary-color: #90EE90;
+    --bg-color: #F0FFF0;
+}
+
+/* 劳动节主题 */
+body.theme-labor-day {
+    --primary-color: #4169E1;
+    --secondary-color: #FFD700;
+    --bg-color: #F0F8FF;
+}
+
+/* 端午节主题 */
+body.theme-dragon-boat {
+    --primary-color: #228B22;
+    --secondary-color: #8B4513;
+    --bg-color: #F5FFFA;
+}
+
+/* 中秋节主题 */
+body.theme-mid-autumn {
+    --primary-color: #4B0082;
+    --secondary-color: #FFD700;
+    --bg-color: #FFF8DC;
+}
+
+/* 国庆节主题 */
+body.theme-national-day {
+    --primary-color: #DE2910;
+    --secondary-color: #FFDE00;
+    --bg-color: #FFF5F5;
+}
+
+body.theme-national-day .section {
+    border: 1px solid rgba(222, 41, 16, 0.2);
+}
+
+body.theme-national-day .btn-primary {
+    background: linear-gradient(135deg, #DE2910, #FF4500);
+}
+
+/* 元旦主题 */
+body.theme-new-year {
+    --primary-color: #1E90FF;
+    --secondary-color: #87CEEB;
+    --bg-color: #F0F8FF;
+}
+
+/* 生日主题 */
+body.theme-birthday {
+    --primary-color: #FF69B4;
+    --secondary-color: #FFB6C1;
+    --bg-color: #FFF0F5;
+    --holiday-primary: #FF69B4;
+    --holiday-secondary: #FFB6C1;
+    --holiday-background: #FFF0F5;
+    --holiday-accent: #FF1493;
+}
+
+body.theme-birthday .section {
+    border: 1px solid rgba(255, 105, 180, 0.2);
+}
+
+body.theme-birthday .btn-primary {
+    background: linear-gradient(135deg, #FF69B4, #FF1493);
+}
+
+body.theme-birthday .card {
+    border-color: rgba(255, 105, 180, 0.3);
+}
+
+body.theme-birthday .holiday-greeting-banner {
+    background: linear-gradient(135deg, rgba(255, 105, 180, 0.95), rgba(255, 20, 147, 0.95));
+}
+
+/* 主题切换按钮（可选） */
+.holiday-theme-switcher {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    font-size: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.holiday-theme-switcher:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 主题选择面板 */
+.holiday-theme-panel {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    display: none;
+    min-width: 200px;
+}
+
+.holiday-theme-panel.show {
+    display: block;
+    animation: holiday-panel-slide 0.3s ease;
+}
+
+@keyframes holiday-panel-slide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.holiday-theme-panel h4 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.holiday-theme-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.holiday-theme-option:hover {
+    background: #f5f5f5;
+}
+
+.holiday-theme-option.active {
+    background: #e3f2fd;
+}
+
+.holiday-theme-option .theme-icon {
+    font-size: 20px;
+}
+
+.holiday-theme-option .theme-name {
+    font-size: 13px;
+    color: #555;
+}
+
+/* 飘落元素 */
+.falling-item {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    will-change: transform, opacity;
+}
+
+/* 节日祝福语横幅 */
+.holiday-greeting-banner {
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.95), rgba(255, 140, 0, 0.95));
+    padding: 12px 32px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.holiday-greeting-banner.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.banner-icon {
+    font-size: 28px;
+    animation: banner-icon-bounce 1s ease infinite;
+}
+
+@keyframes banner-icon-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.banner-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+}
+
+/* 烟花效果容器 */
+.holiday-fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9997;
+}
+
+.firework {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+}
+
+@keyframes firework-explode {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y));
+        opacity: 0;
+    }
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .holiday-greeting-banner {
+        top: 150px;
+        padding: 10px 20px;
+    }
+    
+    .banner-text {
+        font-size: 14px;
+    }
+    
+    .banner-icon {
+        font-size: 20px;
+    }
+    
+    .holiday-theme-notification {
+        top: 70px;
+        padding: 12px 16px;
+    }
+    
+    .holiday-message {
+        font-size: 12px;
+    }
+}
+
+/* ==================== 深色模式节日主题背景 ==================== */
+
+/* 深色模式动态背景容器 */
+.holiday-dark-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    z-index: -9999;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* 深色模式流动光点 */
+.holiday-dark-particle {
+    position: absolute;
+    background: rgba(96, 165, 250, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: holiday-dark-float linear infinite;
+}
+
+@keyframes holiday-dark-float {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(var(--x-end), var(--y-end)) scale(var(--scale-end));
+        opacity: 0;
+    }
+}
+
+/* 深色模式下各节日主题背景 */
+[data-theme="dark"] body.holiday-theme-active .holiday-dark-bg {
+    display: block;
+}
+
+[data-theme="dark"] body.holiday-theme-active {
+    background: #0f172a;
+}
+
+/* 深色模式春节主题 */
+[data-theme="dark"] body.theme-spring-festival {
+    --bg-color: #0f172a;
+}
+
+[data-theme="dark"] body.theme-spring-festival .holiday-dark-particle {
+    background: rgba(220, 20, 60, 0.3);
+}
+
+/* 深色模式生日主题 */
+[data-theme="dark"] body.theme-birthday {
+    --bg-color: #0f172a;
+}
+
+[data-theme="dark"] body.theme-birthday .holiday-dark-particle {
+    background: rgba(255, 105, 180, 0.3);
+}
+
+/* 深色模式国庆主题 */
+[data-theme="dark"] body.theme-national-day {
+    --bg-color: #0f172a;
+}
+
+[data-theme="dark"] body.theme-national-day .holiday-dark-particle {
+    background: rgba(222, 41, 16, 0.3);
+}
+
+/* 深色模式元旦主题 */
+[data-theme="dark"] body.theme-new-year {
+    --bg-color: #0f172a;
+}
+
+[data-theme="dark"] body.theme-new-year .holiday-dark-particle {
+    background: rgba(30, 144, 255, 0.3);
+}
+
+/* 深色模式中秋主题 */
+[data-theme="dark"] body.theme-mid-autumn {
+    --bg-color: #0f172a;
+}
+
+[data-theme="dark"] body.theme-mid-autumn .holiday-dark-particle {
+    background: rgba(255, 215, 0, 0.3);
+}

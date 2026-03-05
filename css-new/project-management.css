@@ -1,0 +1,536 @@
+/* ==================== 项目管理页面样式 ==================== */
+
+/* 项目概览区域 */
+.project-overview {
+    background: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    margin-bottom: var(--spacing-lg);
+}
+
+.project-overview h2 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.project-overview h2 i {
+    color: var(--primary-color);
+    margin-right: var(--spacing-sm);
+}
+
+/* 统计卡片样式在 home.css 中统一定义 */
+
+/* 项目列表区域 */
+.project-list-section {
+    background: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+}
+
+.section-title i {
+    color: var(--primary-color);
+    margin-right: var(--spacing-sm);
+}
+
+/* 按钮组 */
+.section-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* 新建项目按钮 */
+.create-project-btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--primary-color);
+    color: var(--text-light);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    border: none;
+    cursor: pointer;
+}
+
+.create-project-btn:hover {
+    opacity: 0.9;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.create-project-btn i {
+    margin-right: var(--spacing-xs);
+}
+
+/* 桌面端表格 */
+.desktop-table {
+    overflow-x: auto;
+}
+
+.desktop-table .project-table {
+    width: 100%;
+    min-width: auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+/* ==================== 表格样式 - 严格对齐 ==================== */
+
+/* 表格基础样式 - 使用更高优先级选择器 */
+.desktop-table .project-table,
+.project-list-section .project-table {
+    width: 100% !important;
+    min-width: auto !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+}
+
+/* 统一表头和单元格的padding - 使用更高优先级 */
+.desktop-table .project-table th,
+.desktop-table .project-table td,
+.project-list-section .project-table th,
+.project-list-section .project-table td {
+    padding: 12px 16px !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
+}
+
+/* 表格列宽和对齐 - 使用百分比，总和100% */
+.desktop-table .project-table th:nth-child(1),
+.desktop-table .project-table td:nth-child(1),
+.project-list-section .project-table th:nth-child(1),
+.project-list-section .project-table td:nth-child(1) {
+    width: 5% !important;
+    text-align: left !important;
+}
+
+.desktop-table .project-table th:nth-child(2),
+.desktop-table .project-table td:nth-child(2),
+.project-list-section .project-table th:nth-child(2),
+.project-list-section .project-table td:nth-child(2) {
+    width: 15% !important;
+    text-align: left !important;
+}
+
+/* 强制所有表头左对齐 - 使用ID选择器最高优先级 */
+#projectTable thead tr th {
+    text-align: left !important;
+}
+
+#projectTable thead tr th:nth-child(1),
+#projectTable thead tr th:nth-child(2),
+#projectTable thead tr th:nth-child(3),
+#projectTable thead tr th:nth-child(4),
+#projectTable thead tr th:nth-child(5),
+#projectTable thead tr th:nth-child(6),
+#projectTable thead tr th:nth-child(7) {
+    text-align: left !important;
+}
+
+.desktop-table .project-table th:nth-child(3),
+.desktop-table .project-table td:nth-child(3),
+.project-list-section .project-table th:nth-child(3),
+.project-list-section .project-table td:nth-child(3) {
+    width: 25% !important;
+    text-align: left !important;
+}
+
+.desktop-table .project-table th:nth-child(4),
+.desktop-table .project-table td:nth-child(4),
+.project-list-section .project-table th:nth-child(4),
+.project-list-section .project-table td:nth-child(4) {
+    width: 10% !important;
+    text-align: left !important;
+}
+
+.desktop-table .project-table th:nth-child(5),
+.desktop-table .project-table td:nth-child(5),
+.project-list-section .project-table th:nth-child(5),
+.project-list-section .project-table td:nth-child(5) {
+    width: 12% !important;
+    text-align: left !important;
+}
+
+.desktop-table .project-table th:nth-child(6),
+.desktop-table .project-table td:nth-child(6),
+.project-list-section .project-table th:nth-child(6),
+.project-list-section .project-table td:nth-child(6) {
+    width: 12% !important;
+    text-align: left !important;
+}
+
+.desktop-table .project-table th:nth-child(7),
+.desktop-table .project-table td:nth-child(7),
+.project-list-section .project-table th:nth-child(7),
+.project-list-section .project-table td:nth-child(7) {
+    width: 16% !important;
+    text-align: left !important;
+}
+
+/* 表头样式 - 强制所有表头左对齐 */
+.desktop-table .project-table th,
+.project-list-section .project-table th,
+.desktop-table .project-table thead th,
+.project-list-section .project-table thead th {
+    background: var(--bg-light) !important;
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+}
+
+[data-theme="dark"] .desktop-table .project-table th,
+[data-theme="dark"] .project-list-section .project-table th {
+    background: var(--bg-light) !important;
+    color: var(--text-secondary) !important;
+}
+
+/* 表头圆角 */
+.desktop-table .project-table th:first-child,
+.project-list-section .project-table th:first-child {
+    border-top-left-radius: var(--border-radius-md) !important;
+}
+
+.desktop-table .project-table th:last-child,
+.project-list-section .project-table th:last-child {
+    border-top-right-radius: var(--border-radius-md) !important;
+}
+
+/* 内容单元格样式 */
+.desktop-table .project-table td,
+.project-list-section .project-table td {
+    border-bottom: 1px solid var(--border-color) !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+[data-theme="dark"] .desktop-table .project-table td,
+[data-theme="dark"] .project-list-section .project-table td {
+    border-bottom-color: var(--border-color) !important;
+}
+
+/* 复选框左对齐 */
+.desktop-table .project-table th:first-child input[type="checkbox"],
+.desktop-table .project-table td:first-child input[type="checkbox"],
+.project-list-section .project-table th:first-child input[type="checkbox"],
+.project-list-section .project-table td:first-child input[type="checkbox"] {
+    margin: 0 !important;
+    display: inline-block !important;
+}
+
+/* 确保第一列单元格左对齐 */
+.desktop-table .project-table th:first-child,
+.desktop-table .project-table td:first-child,
+.project-list-section .project-table th:first-child,
+.project-list-section .project-table td:first-child {
+    text-align: left !important;
+    vertical-align: middle !important;
+}
+
+/* 表格操作按钮 - 左对齐 */
+.desktop-table .project-table .table-actions,
+.project-list-section .project-table .table-actions {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.desktop-table .project-table .table-actions .btn,
+.project-list-section .project-table .table-actions .btn {
+    padding: 0.25rem !important;
+    min-width: unset !important;
+    width: 28px !important;
+    height: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.desktop-table .project-table .table-actions .btn i,
+.project-list-section .project-table .table-actions .btn i {
+    font-size: 0.75rem !important;
+}
+
+/* 移动端卡片 */
+.mobile-card {
+    display: none;
+    gap: var(--spacing-md);
+}
+
+@media (max-width: 767px) {
+    .mobile-card {
+        display: block;
+    }
+    
+    .desktop-table {
+        display: none;
+    }
+    
+    /* 隐藏桌面端批量操作 */
+    .desktop-batch-actions {
+        display: none !important;
+    }
+    
+    /* 调整section-actions在移动端的布局 */
+    .section-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .section-actions .search-box {
+        width: 100%;
+        max-width: none !important;
+    }
+}
+
+/* 项目卡片 */
+.project-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    margin-bottom: var(--spacing-md);
+}
+
+[data-theme="dark"] .project-card {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+/* 当前项目卡片 */
+.project-card-current {
+    border: 2px solid var(--primary-color);
+}
+
+/* 已结束标签容器 */
+.project-card-ended {
+    text-align: right;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-card-ended span {
+    white-space: nowrap;
+}
+
+/* 创建时间 */
+.project-card-date {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+/* 项目卡片操作按钮 */
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+    margin-top: var(--spacing-sm);
+    flex-wrap: nowrap;
+}
+
+.card-actions .btn {
+    padding: 0.25rem;
+    min-width: unset;
+    width: 2rem;
+    height: 2rem;
+}
+
+.card-actions .btn i {
+    font-size: 0.75rem;
+}
+
+/* 已结束标签 */
+.project-ended-badge {
+    margin-left: 8px;
+    padding: 4px 6px;
+    background-color: rgba(255, 77, 79, 0.2);
+    color: #ff4d4f;
+    font-size: 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.project-card .text-right {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-card .text-right span {
+    white-space: nowrap;
+}
+
+.project-card h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.project-card p {
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-secondary);
+}
+
+.project-card p i {
+    margin-right: var(--spacing-xs);
+    color: var(--primary-color);
+}
+
+.project-card .text-sm {
+    font-size: var(--font-size-sm);
+}
+
+.project-card .text-secondary {
+    color: var(--text-secondary);
+}
+
+/* 卡片操作按钮 */
+.card-actions {
+    display: flex;
+    gap: var(--spacing-xxs);
+    margin-top: var(--spacing-sm);
+}
+
+/* 空状态 */
+.empty-state {
+    display: none;
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+}
+
+.empty-state i {
+    font-size: 48px;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+[data-theme="dark"] .empty-state i {
+    color: var(--text-light);
+}
+
+.empty-state p {
+    color: var(--text-light);
+}
+
+[data-theme="dark"] .empty-state p {
+    color: var(--text-light);
+}
+
+/* 响应式设计 */
+@media (max-width: 767px) {
+    .project-overview,
+    .project-list-section {
+        padding: var(--spacing-md);
+    }
+    
+    .project-overview h2,
+    .section-title {
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* ==================== 强制表格样式 - 最高优先级 ==================== */
+/* 使用ID选择器确保最高优先级 */
+#projectTable {
+    width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+}
+
+#projectTable thead th,
+#projectTable tbody td {
+    text-align: left !important;
+    vertical-align: middle !important;
+    padding: 12px 16px !important;
+    box-sizing: border-box !important;
+}
+
+/* 列宽设置 */
+#projectTable thead th:nth-child(1),
+#projectTable tbody td:nth-child(1) {
+    width: 5% !important;
+}
+
+#projectTable thead th:nth-child(2),
+#projectTable tbody td:nth-child(2) {
+    width: 15% !important;
+}
+
+#projectTable thead th:nth-child(3),
+#projectTable tbody td:nth-child(3) {
+    width: 25% !important;
+}
+
+#projectTable thead th:nth-child(4),
+#projectTable tbody td:nth-child(4) {
+    width: 10% !important;
+}
+
+#projectTable thead th:nth-child(5),
+#projectTable tbody td:nth-child(5) {
+    width: 12% !important;
+}
+
+#projectTable thead th:nth-child(6),
+#projectTable tbody td:nth-child(6) {
+    width: 12% !important;
+}
+
+#projectTable thead th:nth-child(7),
+#projectTable tbody td:nth-child(7) {
+    width: 16% !important;
+}
+
+/* 深色主题适配 */
+[data-theme="dark"] .project-overview {
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .project-list-section {
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .project-overview h2 {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .section-title {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .project-card h3 {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .project-card p {
+    color: var(--text-secondary);
+}

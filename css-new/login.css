@@ -1,0 +1,574 @@
+/* 登录页面样式 */
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e6f7ff 100%);
+    padding: var(--spacing-md);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 480px;
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl);
+    animation: fadeIn 0.5s ease-in-out;
+    position: relative;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.login-header .logo {
+    font-size: 48px;
+    margin-bottom: var(--spacing-md);
+    display: block;
+}
+
+.login-header h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.login-header p {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+}
+
+.help-btn {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.help-btn:hover {
+    background-color: var(--border-color);
+    color: var(--primary-color);
+}
+
+.message {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-sm);
+    display: none;
+}
+
+.message.success {
+    background-color: rgba(0, 180, 42, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(0, 180, 42, 0.2);
+}
+
+.message.error {
+    background-color: rgba(245, 34, 45, 0.1);
+    color: var(--error-color);
+    border: 1px solid rgba(245, 34, 45, 0.2);
+}
+
+.message.info {
+    background-color: rgba(19, 194, 194, 0.1);
+    color: var(--info-color);
+    border: 1px solid rgba(19, 194, 194, 0.2);
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+#loginForm {
+    margin-bottom: var(--spacing-xl);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.input-wrapper {
+    position: relative;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-fast);
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(22, 93, 255, 0.1);
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 40px;
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    background-color: var(--bg-light);
+}
+
+.input-wrapper input:focus {
+    outline: none;
+}
+
+.input-wrapper input::placeholder {
+    color: var(--text-light);
+}
+
+#handleLoginBtn {
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+}
+
+#handleRegisterBtn {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+}
+
+.supabase-config {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: rgba(22, 93, 255, 0.05);
+    border-radius: var(--border-radius-md);
+    border: 1px solid rgba(22, 93, 255, 0.1);
+}
+
+.supabase-config h3 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.config-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.config-toggle input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.config-toggle label {
+    font-size: var(--font-size-sm);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+#configFields {
+    margin-top: var(--spacing-md);
+}
+
+.config-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.config-buttons .btn {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+}
+
+.back-link {
+    text-align: center;
+}
+
+.back-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    transition: color var(--transition-fast);
+}
+
+.back-link a:hover {
+    color: var(--primary-dark);
+}
+
+/* 教程对话框样式 */
+.tutorial-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+}
+
+.tutorial-dialog.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tutorial-content {
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(-20px);
+    transition: transform var(--transition-base);
+}
+
+.tutorial-dialog.active .tutorial-content {
+    transform: translateY(0);
+}
+
+.tutorial-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.tutorial-header h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.tutorial-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.tutorial-close:hover {
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+}
+
+.tutorial-body {
+    flex: 1;
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+}
+
+.tutorial-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.tutorial-section h4 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.tutorial-section p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.tutorial-section ul {
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-lg);
+}
+
+.tutorial-section li {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.6;
+    position: relative;
+}
+
+.step-number {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: var(--spacing-xs);
+}
+
+.highlight-box {
+    background-color: rgba(22, 93, 255, 0.05);
+    border-left: 4px solid var(--primary-color);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.highlight-box p {
+    margin: 0;
+}
+
+.copy-code {
+    background-color: var(--bg-dark);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    overflow-x: auto;
+}
+
+.copy-code code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: var(--font-size-sm);
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .login-wrapper {
+        padding: var(--spacing-sm);
+    }
+
+    .login-container {
+        padding: var(--spacing-lg);
+    }
+
+    .help-btn {
+        position: static;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .config-buttons {
+        flex-direction: column;
+    }
+
+    .tutorial-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .tutorial-body {
+        padding: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: var(--spacing-md);
+    }
+
+    .login-header .logo {
+        font-size: 36px;
+    }
+
+    .login-header h1 {
+        font-size: var(--font-size-lg);
+    }
+
+    .input-wrapper input {
+        padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) 36px;
+    }
+
+    .input-wrapper i {
+        left: var(--spacing-sm);
+    }
+
+    #handleLoginBtn,
+    #handleRegisterBtn {
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* 深色主题样式 */
+body.dark-theme .login-wrapper {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+body.dark-theme .login-container {
+    background-color: var(--dark-card-bg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .login-header h1 {
+    color: var(--dark-text);
+}
+
+body.dark-theme .login-header p {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-theme .help-btn {
+    background-color: var(--dark-border);
+    color: var(--dark-text-secondary);
+}
+
+body.dark-theme .help-btn:hover {
+    background-color: var(--border-color);
+    color: var(--primary-color);
+}
+
+body.dark-theme .input-wrapper {
+    border-color: var(--dark-border);
+}
+
+body.dark-theme .input-wrapper input {
+    background-color: var(--dark-card-bg);
+    color: var(--dark-text);
+}
+
+body.dark-theme .input-wrapper input::placeholder {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-theme .supabase-config {
+    background-color: rgba(22, 93, 255, 0.1);
+    border: 1px solid rgba(22, 93, 255, 0.2);
+}
+
+body.dark-theme .config-toggle label {
+    color: var(--dark-text);
+}
+
+body.dark-theme .tutorial-content {
+    background-color: var(--dark-card-bg);
+}
+
+body.dark-theme .tutorial-header {
+    background-color: var(--dark-card-bg);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+body.dark-theme .tutorial-header h3 {
+    color: var(--dark-text);
+}
+
+body.dark-theme .tutorial-section h4 {
+    color: var(--dark-text);
+}
+
+body.dark-theme .tutorial-section p {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-theme .tutorial-section li {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-theme .highlight-box {
+    background-color: rgba(22, 93, 255, 0.1);
+    border-left: 4px solid var(--primary-color);
+}
+
+body.dark-theme .copy-code {
+    background-color: var(--dark-border);
+}
+
+body.dark-theme .copy-code code {
+    color: var(--dark-text);
+}

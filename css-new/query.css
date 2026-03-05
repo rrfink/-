@@ -1,0 +1,812 @@
+/* ==================== 查询分析页面样式 ==================== */
+
+/* 页面容器动画 */
+.app-main {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 标签页样式 */
+.tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-sm);
+}
+
+.tabs::-webkit-scrollbar {
+    height: 4px;
+}
+
+.tabs::-webkit-scrollbar-track {
+    background: var(--bg-light);
+    border-radius: var(--border-radius-sm);
+}
+
+.tabs::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: var(--border-radius-sm);
+}
+
+.tab-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.tab-btn:hover {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.tab-btn.active {
+    background: var(--primary);
+    color: var(--text-light);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+}
+
+.tab-btn.active:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.tab-btn i {
+    font-size: 14px;
+}
+
+/* 表单样式 */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.form-select {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-md);
+    background: var(--bg-light);
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    transition: all 0.3s ease;
+}
+
+.form-select:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.1);
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.2);
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.checkbox-label:hover {
+    border-color: var(--primary);
+    background: rgba(var(--primary-rgb), 0.05);
+}
+
+.form-checkbox:checked + .checkbox-label {
+    background: var(--primary);
+    color: var(--text-light);
+    border-color: var(--primary);
+}
+
+/* 加载状态 */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-2xl);
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border);
+    border-top: 3px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: var(--spacing-sm);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 空状态 */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-2xl);
+    text-align: center;
+    background: var(--bg-light);
+    border-radius: var(--border-radius-lg);
+    border: 2px dashed var(--border);
+}
+
+.empty-state i {
+    font-size: 48px;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-sm);
+    opacity: 0.6;
+}
+
+.empty-state p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.empty-state p.text-sm {
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+}
+
+.dark .empty-state {
+    background: var(--bg-dark-card);
+    border-color: var(--border-dark);
+}
+
+.dark .empty-state i {
+    color: var(--text-dark-light);
+}
+
+.dark .empty-state p {
+    color: var(--text-dark-secondary);
+}
+
+.dark .empty-state p.text-sm {
+    color: var(--text-dark-light);
+}
+
+/* 工资查询结果 */
+.query-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.query-stats {
+    margin-top: var(--spacing-md);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.query-stats .stat-card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.query-stats .stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+}
+
+.query-stats .stat-label {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.query-stats .stat-value {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.query-stats .stat-change {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    margin-top: var(--spacing-xs);
+}
+
+.query-stats .stat-change.positive {
+    color: var(--success);
+}
+
+.wage-card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.wage-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+}
+
+.wage-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.wage-card-header h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.wage-tag {
+    padding: 2px 8px;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wage-tag:contains('高于平均') {
+    background: rgba(var(--success-rgb), 0.2);
+    color: var(--success);
+}
+
+.wage-tag:contains('低于平均') {
+    background: rgba(var(--warning-rgb), 0.2);
+    color: var(--warning);
+}
+
+.wage-tag:contains('平均水平') {
+    background: rgba(var(--primary-rgb), 0.2);
+    color: var(--primary);
+}
+
+.wage-card-body {
+    margin-top: var(--spacing-sm);
+}
+
+.wage-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.info-item i {
+    color: var(--primary);
+    font-size: 14px;
+}
+
+.wage-card-footer {
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--border);
+}
+
+/* 多月份对比 */
+.comparison-chart {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.chart-container {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--spacing-sm);
+    height: 200px;
+    padding: var(--spacing-sm) 0;
+}
+
+.chart-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.chart-label {
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.chart-bar {
+    flex: 1;
+    width: 100%;
+    background: var(--bg-light);
+    border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+    overflow: hidden;
+    position: relative;
+    min-height: 40px;
+}
+
+.chart-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--primary);
+    border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: var(--spacing-xs);
+}
+
+.chart-fill.success {
+    background: var(--success);
+}
+
+.chart-fill.warning {
+    background: var(--warning);
+}
+
+.chart-fill:hover {
+    opacity: 0.9;
+    transform: scaleY(1.05);
+}
+
+.chart-value {
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    color: var(--text-light);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: var(--spacing-sm);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.comparison-table th {
+    background: var(--bg-light);
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.comparison-table tr:hover {
+    background: rgba(var(--primary-rgb), 0.05);
+}
+
+.comparison-summary {
+    margin-top: var(--spacing-md);
+}
+
+/* 工资趋势 */
+.trend-chart {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.trend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.trend-month {
+    width: 60px;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.trend-bar-container {
+    flex: 1;
+    position: relative;
+}
+
+.trend-bar {
+    height: 8px;
+    background: var(--bg-light);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    position: relative;
+}
+
+.trend-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--success));
+    border-radius: var(--border-radius-sm);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.trend-fill:hover {
+    transform: scaleY(1.5);
+    box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.3);
+}
+
+.trend-tooltip {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    padding: 2px 8px;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.trend-fill:hover .trend-tooltip {
+    opacity: 1;
+    transform: translateY(-5px);
+}
+
+.trend-value {
+    width: 100px;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+    text-align: left;
+    flex-shrink: 0;
+}
+
+.trend-summary {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: rgba(var(--primary-rgb), 0.05);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid rgba(var(--primary-rgb), 0.1);
+}
+
+.summary-item {
+    text-align: center;
+}
+
+.summary-label {
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-xs);
+}
+
+.summary-value {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* 考勤统计样式在 home.css 中统一定义 */
+
+.attendance-distribution {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.distribution-chart {
+    margin-top: var(--spacing-md);
+}
+
+.distribution-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.distribution-label {
+    width: 80px;
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-dot.success {
+    background: var(--success);
+}
+
+.status-dot.warning {
+    background: var(--warning);
+}
+
+.status-dot.error {
+    background: var(--error);
+}
+
+.distribution-bar {
+    flex: 1;
+    height: 8px;
+    background: var(--bg-light);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+}
+
+.distribution-fill {
+    height: 100%;
+    border-radius: var(--border-radius-sm);
+    transition: all 0.3s ease;
+}
+
+.distribution-fill.success {
+    background: var(--success);
+}
+
+.distribution-fill.warning {
+    background: var(--warning);
+}
+
+.distribution-fill.error {
+    background: var(--error);
+}
+
+.distribution-fill:hover {
+    transform: scaleY(1.5);
+    box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.3);
+}
+
+.distribution-value {
+    width: 60px;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+    text-align: right;
+}
+
+.attendance-summary {
+    margin-top: var(--spacing-md);
+}
+
+/* 响应式设计 */
+@media (max-width: 767px) {
+    .tabs {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+
+    .tab-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trend-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+
+    .trend-month {
+        width: 100%;
+        text-align: left;
+    }
+
+    .trend-value {
+        width: 100%;
+        text-align: left;
+    }
+
+    .chart-container {
+        flex-direction: column;
+        height: auto;
+        gap: var(--spacing-md);
+    }
+
+    .chart-item {
+        width: 100%;
+    }
+
+    .chart-bar {
+        height: 200px;
+        width: 100%;
+    }
+
+    .chart-fill {
+        width: 100% !important;
+        height: var(--height) !important;
+    }
+
+    .grid.grid-cols-1.md\:grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .grid.grid-cols-1.md\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 深色主题适配 */
+.dark .wage-card {
+    background: var(--bg-dark-card);
+    border-color: var(--border-dark);
+}
+
+.dark .wage-card:hover {
+    border-color: var(--primary);
+}
+
+.dark .wage-card-header h3 {
+    color: var(--text-dark-primary);
+}
+
+.dark .info-item {
+    color: var(--text-dark-secondary);
+}
+
+.dark .comparison-chart,
+.dark .trend-chart,
+.dark .attendance-distribution {
+    background: var(--bg-dark-card);
+    border-color: var(--border-dark);
+}
+
+.dark .comparison-table {
+    background: var(--bg-dark-card);
+}
+
+.dark .comparison-table th {
+    background: var(--bg-dark-light);
+    color: var(--text-dark-secondary);
+    border-bottom-color: var(--border-dark);
+}
+
+.dark .comparison-table td {
+    border-bottom-color: var(--border-dark);
+}
+
+.dark .comparison-table tr:hover {
+    background: rgba(var(--primary-rgb), 0.1);
+}
+
+.dark .stat-card {
+    background: var(--bg-dark-card);
+    border-color: var(--border-dark);
+}
+
+.dark .stat-card:hover {
+    border-color: var(--primary);
+}
+
+.dark .stat-label {
+    color: var(--text-dark-secondary);
+}
+
+.dark .stat-value {
+    color: var(--text-dark-primary);
+}
+
+.dark .summary-label {
+    color: var(--text-dark-secondary);
+}
+
+.dark .summary-value {
+    color: var(--text-dark-primary);
+}
+
+.dark .trend-month,
+.dark .trend-value {
+    color: var(--text-dark-secondary);
+}
+
+.dark .trend-summary {
+    background: rgba(var(--primary-rgb), 0.1);
+    border-color: rgba(var(--primary-rgb), 0.2);
+}
+
+.dark .distribution-label,
+.dark .distribution-value {
+    color: var(--text-dark-secondary);
+}

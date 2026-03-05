@@ -1,0 +1,330 @@
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.dialog-overlay-show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: 24px;
+    max-width: 400px;
+    width: 90%;
+    max-height: 80vh;
+    box-shadow: var(--shadow-lg);
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
+}
+
+.dialog-show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.dialog-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.dialog-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.dialog-info .dialog-icon {
+    color: var(--info-color);
+}
+
+.dialog-success .dialog-icon {
+    color: var(--success-color);
+}
+
+.dialog-warning .dialog-icon {
+    color: var(--warning-color);
+}
+
+.dialog-error .dialog-icon {
+    color: var(--error-color);
+}
+
+.dialog-confirm .dialog-icon {
+    color: var(--primary-color);
+}
+
+.dialog-title {
+    flex: 1;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.dialog-close {
+    background: var(--bg-tertiary);
+    border: none;
+    font-size: 14px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.dialog-close:hover {
+    background-color: var(--error-color);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.dialog-close-btn {
+    background: var(--bg-tertiary);
+    border: none;
+    font-size: 14px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.dialog-close-btn:hover {
+    background-color: var(--error-color);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.dialog-body {
+    margin-bottom: 20px;
+}
+
+.dialog-message {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.dialog-footer {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+    .dialog {
+        padding: 20px;
+        max-width: calc(100% - 40px);
+    }
+
+    .dialog-header {
+        margin-bottom: 12px;
+    }
+
+    .dialog-body {
+        margin-bottom: 16px;
+    }
+}
+
+.absent-reason-dialog {
+    text-align: center;
+}
+
+.absent-reason-dialog .dialog-date {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 24px;
+}
+
+.absent-reason-dialog .reason-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.absent-reason-dialog .reason-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    background: var(--bg-dark);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+}
+
+.absent-reason-dialog .reason-btn:hover {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.absent-reason-dialog .reason-btn i {
+    font-size: 28px;
+}
+
+.absent-reason-dialog .reason-btn.leave-btn:hover {
+    border-color: #f5222d;
+    background: #f5222d;
+}
+
+.absent-reason-dialog .reason-btn.holiday-btn:hover {
+    border-color: #1890ff;
+    background: #1890ff;
+}
+
+.absent-reason-dialog .reason-btn.rest-btn:hover {
+    border-color: var(--warning-color);
+    background: var(--warning-color);
+}
+
+.absent-reason-dialog .reason-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.note-dialog {
+    text-align: left;
+}
+
+.note-dialog .note-date {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.note-dialog .form-group {
+    margin-bottom: 20px;
+}
+
+.note-dialog .form-label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+.note-dialog .form-label i {
+    margin-right: 6px;
+}
+
+.note-dialog .form-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family-base);
+    min-height: 100px;
+    resize: vertical;
+    box-sizing: border-box;
+    background: var(--bg-dark);
+    color: var(--text-color);
+    transition: all var(--transition-fast);
+}
+
+.note-dialog .form-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.note-dialog .char-count {
+    text-align: right;
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+    margin-top: 5px;
+}
+
+.note-dialog .form-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-base);
+    background: var(--bg-dark);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.note-dialog .form-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.note-dialog .form-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-base);
+    background: var(--bg-dark);
+    color: var(--text-color);
+    transition: all var(--transition-fast);
+}
+
+.note-dialog .form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.note-dialog .overtime-calc {
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+    margin-top: 5px;
+}
+
+.note-dialog .overtime-calc span {
+    font-weight: 600;
+    color: var(--warning-color);
+}

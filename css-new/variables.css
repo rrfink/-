@@ -1,0 +1,135 @@
+:root {
+    --primary-color: #165DFF;
+    --primary-light: #40a9ff;
+    --primary-dark: #096dd9;
+    
+    --success-color: #00B42A;
+    --warning-color: #FF7D00;
+    --error-color: #f5222d;
+    --info-color: #13c2c2;
+    
+    --text-color: #333333;
+    --text-secondary: #666666;
+    --text-light: #999999;
+    
+    --bg-color: #f5f7fa;
+    --bg-light: #ffffff;
+    --bg-dark: #e8e8e8;
+    --bg-primary: #ffffff;
+    --bg-tertiary: #f0f0f0;
+    
+    --border-color: #e8e8e8;
+    --border-light: #f0f0f0;
+    
+    --card-bg: #ffffff;
+    
+    --font-family-base: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    --font-size-base: 16px;
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 18px;
+    --font-size-2xl: 24px;
+    
+    --spacing-xxs: 2px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+    
+    --transition-fast: 0.15s;
+    --transition-base: 0.3s;
+    
+    --z-index-modal: 1000;
+    --z-index-dropdown: 100;
+    --z-index-fixed: 10;
+}
+
+[data-theme="dark"] {
+    --text-color: #f3f4f6;
+    --text-secondary: #d1d5db;
+    --text-light: #9ca3af;
+
+    --bg-color: #0f172a;
+    --bg-light: #1e293b;
+    --bg-dark: #334155;
+    --bg-primary: #1e293b;
+    --bg-tertiary: #334155;
+
+    --border-color: #475569;
+    --border-light: #64748b;
+
+    --card-bg: #1e293b;
+    --container-bg: #1e293b;
+
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.5);
+
+    --success-color: #4ade80;
+    --warning-color: #fbbf24;
+    --error-color: #f87171;
+    --info-color: #22d3ee;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--font-size-base);
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.5;
+    padding: 0;
+    /* 禁用字体抗锯齿以获得更清晰的截图效果 */
+    /* -webkit-font-smoothing: antialiased; */
+    /* -moz-osx-font-smoothing: grayscale; */
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
